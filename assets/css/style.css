@@ -1,0 +1,14 @@
+.section-title {
+	font-family: oswald;
+	color: #aaaaaa;
+}
+
+.crystals {
+	float: left;
+}
+
+#game-section {
+	font-size: 40px;
+	color: black;
+	font-weight: bold;
+}

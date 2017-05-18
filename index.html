@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crystals Counter</title>
 
   <!-- jQuery Library -->
@@ -10,16 +11,137 @@
   <!-- Bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-<link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
- <link rel="stylesheet" href="styles.css">
+<!-- Crystals are given a random number between 4 and 12
+	When we choose a crystal it changes ourNumber to the number that corresponds with that crystal
+
+	When ourNumber and the givenNumber match then we win. If ourNumber is greater than the givenNumber then losses increases by 1 and a new number is generated. Wins increase by one after we win and a new number between 19-120 is generated. 
+
+ -->
 
 </head>
 <body>
+  <body>    
+    
+      <div id="game-section">
+        <p>Use the crystals to reach the goal!</p>
+          <div class="crystals">
+             <div class="crystal1 button"><img src="assets/images/crystal_1.jpg" alt="Crystals!" height="175" width="175"></div>
+             <div class="crystal2 button"><img src="assets/images/crystal_2.png" alt="Crystals!" height="175" width="175"></div>
+             <div class="crystal3 button"><img src="assets/images/crystal_3.jpg" alt="Crystals!" height="175" width="175"></div>
+             <div class="crystal4 button"><img src="assets/images/crystal_4.jpg" alt="Crystals!" height="175" width="175"></div>
+           </div>
+      <div id="game-section">
+        <div>
+          <h3 class="section-title">Wins</h3>
+          <!-- The div where our wins will be shown. -->
+          <div id="wins"></div>
 
-  
+          <h3 class="section-title">Losses</h3>
+          <div id="losses"></div>
+        </div>
+        <div id="goal-section">
+          <h3 class="section-title">Goal</h3>
+          <!-- The div where our current word (and guessing progress) will be shown. -->
+          <div id="goal"></div>
+        </div>
+        <div id="my-number-section">
+          <h3 class="section-title">My Number</h3>
+          <!-- The div where our remaining guesses will be shown. -->
+          <div id="mynumber"></div>
+        </div>
+      </div>
 
-  </script>
+
+    <!-- Linking to our JavaScript file. src="/assets/javascript/game.js"   -->
+    <script type="text/javascript">
+
+    // var randomGoal = ["101", "109", "119", "120"];
+$(document).ready(function(){
+
+  var mygoal = 0;
+  var myCurrentNumber = 0;
+  var wins = 0;
+  var losses = 0;
+  $("#wins").html(wins);
+  $("#losses").html(losses);
+
+  startover();
+  game();
+
+function startover() {
+
+      mygoal = 0;
+      $("#goal").html(mygoal);
+
+      function goalOptions(min,max){
+              return Math.floor(Math.random()*(max-min+1)+min);
+            }
+
+          var randomGoal = goalOptions(19,120);
+
+          $("#goal").html(randomGoal);
+}
+
+
+function game() {
+
+  $(".crystal1").on("click", function () {
+
+      function numberOptions(min,max){
+              return Math.floor(Math.random()*(max-min+1)+min);
+            }
+
+          var numberOutcome1 = numberOptions(1,12);
+
+          myCurrentNumber = myCurrentNumber + parseInt($(numberOutcome1).data("#mynumber"));
+
+          $("#mynumber").html(myCurrentNumber);
+      });
+}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //  $(document).ready(function() {
+
+    //   var crystal1Number = "";
+    //   var crystal2Number = "";
+    //   var crystal3Number = "";
+    //   var crystal4Number = "";
+    //   var result = "";
+
+    //  $(".crystal1").on("click", function () {  
+
+    //     for (i = 1; i < 13; i++) {
+    //       var crystal1number = Math.floor(Math.random()*13);
+    //       var result = 
+    //       crystal1Number = crystal1Number + result;
+
+
+    //       $("#mynumber").html(crystal1number);
+    //       }
+    //       });
+
+
+    // });
+
+    </script>
 
 </body>
 </html>
