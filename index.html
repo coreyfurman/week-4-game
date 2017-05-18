@@ -29,10 +29,10 @@
       <div id="game-section">
         <p>Use the crystals to reach the goal!</p>
           <div class="crystals">
-             <div class="crystal1 button"><img src="assets/images/crystal_1.jpg" alt="Crystals!" height="175" width="175"></div>
-             <div class="crystal2 button"><img src="assets/images/crystal_2.png" alt="Crystals!" height="175" width="175"></div>
-             <div class="crystal3 button"><img src="assets/images/crystal_3.jpg" alt="Crystals!" height="175" width="175"></div>
-             <div class="crystal4 button"><img src="assets/images/crystal_4.jpg" alt="Crystals!" height="175" width="175"></div>
+             <div id="crystal1"><img src="assets/images/crystal_1.jpg" alt="Crystals!" height="150" width="150"></div>
+             <div id="crystal2"><img src="assets/images/crystal_2.png" alt="Crystals!" height="150" width="150"></div>
+             <div id="crystal3"><img src="assets/images/crystal_3.jpg" alt="Crystals!" height="150" width="150"></div>
+             <div id="crystal4"><img src="assets/images/crystal_4.jpg" alt="Crystals!" height="175" width="150"></div>
            </div>
       <div id="game-section">
         <div>
@@ -66,6 +66,7 @@ $(document).ready(function(){
   var myCurrentNumber = 0;
   var wins = 0;
   var losses = 0;
+  var counter = 0;
   $("#wins").html(wins);
   $("#losses").html(losses);
 
@@ -85,29 +86,31 @@ function startover() {
 
           $("#goal").html(randomGoal);
 }
-
-
-function game() {
-
-  $(".crystal1").on("click", function () {
-
+     
       function numberOptions(min,max){
               return Math.floor(Math.random()*(max-min+1)+min);
             }
 
-          var numberOutcome1 = numberOptions(1,12);
+function game() {
 
-          myCurrentNumber = myCurrentNumber + parseInt($(numberOutcome1).data("#mynumber"));
+          // myCurrentNumber = myCurrentNumber + parseInt($(numberOutcome1).data("#mynumber"));
 
-          $("#mynumber").html(myCurrentNumber);
-      });
+          $("#crystal1").val(numberOptions(1,12));
+           $("#crystal2").val(numberOptions(1,12));
+            $("#crystal3").val(numberOptions(1,12));
+             $("#crystal4").val(numberOptions(1,12));
+
 }
+
+
+$("#crystal1").on("click", function () {
+
+    counter += parseInt(this.val);
+    console.log((this.val));
+
+     });
+
 });
-
-
-
-
-
 
 
 
